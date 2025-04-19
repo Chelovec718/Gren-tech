@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrenTech RolePlay</title>
+    <style>
+      /* Фон звезд */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: black;
+        overflow: hidden;
+      }
+
+      body::before {
+        content: '';
+        position: fixed;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(white 1px, transparent 1px);
+        background-size: 5px 5px;
+        animation: starScroll 60s linear infinite;
+        opacity: 0.08;
+        z-index: 0;
+      }
+
+      @keyframes starScroll {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      .container {
+        position: relative;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        border-radius: 1rem;
+        padding: 2rem;
+        max-width: 600px;
+        text-align: center;
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
+        color: white;
+        margin: 5vh auto;
+        animation: fadeIn 2s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1, p {
+        margin: 1rem 0;
+        letter-spacing: 1px;
+      }
+
+      a.button {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background-color: #00bcd4;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.75rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1s ease-out 2.5s forwards;
+        box-shadow: 0 0 10px #00bcd4;
+        position: relative;
+        overflow: hidden;
+      }
+
+      a.button:hover {
+        background-color: #0097a7;
+        transform: scale(1.05);
+        box-shadow: 0 0 25px #00e5ff;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .authors {
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        color: #cccccc;
+        text-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
+      }
+
+      /* Анимированная подсветка текста */
+      h1, p {
+        text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+      }
+
+      /* Добавление плавной анимации для фонового текста */
+      .background-text {
+        font-size: 1.5rem;
+        color: rgba(255, 255, 255, 0.1);
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: backgroundTextAnim 10s ease-out infinite;
+      }
+
+      @keyframes backgroundTextAnim {
+        0% { opacity: 0; }
+        25% { opacity: 0.25; }
+        50% { opacity: 0.5; }
+        75% { opacity: 0.75; }
+        100% { opacity: 1; }
+      }
+
+      /* Плавающие частицы */
+      .particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .particle {
+        position: absolute;
+        background-color: rgba(0, 255, 255, 0.5);
+        border-radius: 50%;
+        animation: float 10s infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translate(0, 0) scale(0.5);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(200px, 300px) scale(1);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Добро пожаловать на GrenTech RolePlay!</h1>
+      <p>Лучший КРМП-проект с уникальной системой, приятным сообществом и постоянными обновлениями. Присоединяйся и стань частью нашей истории!</p>
+      <a href="https://discord.gg/hjCAeeJe" target="_blank" class="button">Перейти на сервер</a>
+      <div class="authors">Автор: Candyfer and Abramov</div>
+    </div>
+
+    <div class="background-text">GrenTech RolePlay - Присоединяйся к нам!</div>
+
+    <!-- Плавающие частицы -->
+    <div class="particles">
+      <div class="particle" style="width: 10px; height: 10px; left: 20%; animation-delay: 0s;"></div>
+      <div class="particle" style="width: 12px; height: 12px; left: 50%; animation-delay: 2s;"></div>
+      <div class="particle" style="width: 8px; height: 8px; left: 80%; animation-delay: 4s;"></div>
+      <div class="particle" style="width: 15px; height: 15px; left: 30%; animation-delay: 3s;"></div>
+      <div class="particle" style="width: 7px; height: 7px; left: 60%; animation-delay: 1s;"></div>
+      <div class="particle" style="width: 9px; height: 9px; left: 40%; animation-delay: 5s;"></div>
+    </div>
+
+    <script>
+      // Этот скрипт контролирует анимацию кнопки "Перейти на сервер"
+      window.onload = () => {
+        const button = document.querySelector('.button');
+        setTimeout(() => {
+          button.style.opacity = 1;
+          button.style.transform = 'translateY(0)';
+        }, 2500); // Кнопка появится через 2.5 секунды
+      };
+    </script>
+  </body>
+</html>
